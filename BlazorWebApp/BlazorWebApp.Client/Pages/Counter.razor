@@ -14,9 +14,8 @@
                       AllowDeleting="true"
                       AllowEditing="true"
                       Mode="EditMode.Normal"></GridEditSettings>
-    <GridEvents RowCreating="RowCreating"
-                RowEditing="RowEditing"
-                RowDeleting="RowDeleting"
+    <GridEvents RowDeleting="RowDeleting"
+                RowUpdated="RowUpdated"
                 TValue="Book"></GridEvents>
     <GridColumns>
         <GridColumn Field="@nameof(Book.Id)" IsPrimaryKey="true" IsIdentity="true" Visible="false"></GridColumn>
@@ -35,18 +34,19 @@
     {
         LibraryBooks = await clientlibrary.GetBooks();
     }
-
-    public async Task RowCreating(RowCreatingEventArgs<Book> args)
-    {
-        await clientlibrary.InsertBook(args.Data);
-    }
-
-    public async Task RowEditing(RowEditingEventArgs<Book> args)
-    {
-        await clientlibrary.UpdateBook(args.Data.Id, args.Data);
-    }
     public async Task RowDeleting(RowDeletingEventArgs<Book> args)
     {
         await clientlibrary.RemoveBook(args.Datas[0].Id);
+    }
+    public async Task RowUpdated(RowUpdatedEventArgs<Book> args)
+    {
+        if (args.Action == SaveActionType.Added)
+        {
+            await clientlibrary.InsertBook(args.Data); // Handle insert.
+        }
+        else if (args.Action == SaveActionType.Edited)
+        {
+            await clientlibrary.UpdateBook(args.Data.Id, args.Data); // Handle update.
+        }
     }
 }
