@@ -2,7 +2,7 @@
 
 ## Overview
 
-This sample demonstrates how to perform Create, Read, Update, and Delete (CRUD) operations in the Syncfusion Blazor DataGrid using Entity Framework Core, SQL Server, and Web API. The application retrieves data from a SQL Server database, exposes data-access operations through API endpoints, and synchronizes changes between the DataGrid and the database. The sample serves as a reference implementation for developers building data-driven Blazor applications that require persistent storage and full CRUD functionality.
+This sample demonstrates how to perform Create, Read, Update, and Delete (CRUD) operations in the Syncfusion [Blazor DataGrid](https://www.syncfusion.com/blazor-components/blazor-datagrid) using Entity Framework Core, SQL Server, and Web API. The application retrieves data from a SQL Server database, exposes data-access operations through API endpoints, and synchronizes changes between the DataGrid and the database. The sample serves as a reference implementation for developers building data-driven Blazor applications that require persistent storage and full CRUD functionality.
 
 ## Key Features
 
